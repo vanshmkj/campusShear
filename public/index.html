@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#153a35">
+  <meta name="description" content="Share useful campus resources with your student community.">
+  <title>CampusShare — Good things go around</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="CampusShare home">
+      <span class="brand-mark" aria-hidden="true">c</span>
+      <span>campus<span class="brand-light">share</span></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation">☰</button>
+    <nav id="primaryNav" class="primary-nav" aria-label="Main navigation">
+      <a href="#browse">Explore</a>
+      <a href="#how">How it works</a>
+      <a class="nav-auth" href="#account">Log in</a>
+      <button class="button button-small button-dark nav-register" data-open-register>Join CampusShare</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> Your campus, a little more connected</p>
+        <h1>Good things<br>go <span class="serif-accent">around.</span></h1>
+        <p class="hero-intro">Borrow the calculator. Pass on the textbook. Find the things you need from the people right around you.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#browse">Explore resources <span aria-hidden="true">↗</span></a>
+          <button class="button button-outline" data-open-register>Join your campus</button>
+        </div>
+        <div class="hero-note"><span class="avatar-stack" aria-hidden="true"><i>J</i><i>A</i><i>M</i></span><span>Made for students, shared by students</span></div>
+      </div>
+      <div class="hero-art" aria-label="A student finding books and shared supplies">
+        <div class="art-sun"></div>
+        <div class="art-note note-top"><span class="note-icon">↗</span><span>Little things<br>make a big day</span></div>
+        <div class="art-book book-back"></div>
+        <div class="art-book book-front"><span>THE<br>SHARING<br>ECONOMY</span><i>campus edition</i></div>
+        <div class="art-plant"><i></i><i></i><i></i><b></b></div>
+        <div class="art-pencil"></div>
+        <div class="art-caption"><span class="caption-dot"></span> A campus that looks out for you</div>
+      </div>
+      <div class="hero-bottom">
+        <span>PASS IT ON</span><span class="hero-line"></span><span>MAKE SOMETHING GOOD</span>
+      </div>
+    </section>
+
+    <section id="browse" class="browse-section">
+      <div class="section-wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">THE COMMUNITY SHELF</p><h2>Find your next <span class="serif-accent">favorite.</span></h2></div>
+          <p>Useful things have a way of finding the right person.<br>See what’s available around campus.</p>
+        </div>
+        <div class="browse-tools">
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="resourceSearch" type="search" placeholder="Try “biology textbook”" aria-label="Search resources"></label>
+          <label class="select-wrap"><span class="sr-only">Filter by category</span><select id="categoryFilter"><option value="">All categories</option><option>Books</option><option>Electronics</option><option>Lab equipment</option><option>Sports</option><option>Other</option></select></label>
+          <span id="resourceCount" class="result-count"></span>
+        </div>
+        <div id="resourceGrid" class="resource-grid" aria-live="polite"></div>
+        <div id="emptyResources" class="empty-state" hidden><span>✳</span><h3>No resources found just yet</h3><p>Try a different search or check back soon.</p></div>
+      </div>
+    </section>
+
+    <section id="how" class="how-section section-wrap">
+      <div class="how-intro"><p class="eyebrow">SHARING, MADE SIMPLE</p><h2>More sharing.<br><span class="serif-accent">Less stuff.</span></h2><p>A good campus community is one where everyone can lend a hand—and an extra charger.</p></div>
+      <div class="steps">
+        <article class="step"><span class="step-number">01</span><div class="step-icon">✳</div><h3>Find your people</h3><p>Sign up with your student details. An admin reviews each account to keep the community campus-only.</p></article>
+        <article class="step"><span class="step-number">02</span><div class="step-icon">↗</div><h3>Share what you have</h3><p>List a book, a calculator, or anything else that could help a fellow student out.</p></article>
+        <article class="step"><span class="step-number">03</span><div class="step-icon">♡</div><h3>Pass the good on</h3><p>Request what you need, coordinate with the owner, and return it when you’re done.</p></article>
+      </div>
+    </section>
+
+    <section id="account" class="account-section">
+      <div class="section-wrap account-layout">
+        <div class="account-copy"><p class="eyebrow">YOUR CAMPUS COMMUNITY</p><h2>There’s room<br>for <span class="serif-accent">everyone.</span></h2><p>Join students sharing useful things, saving a little money, and making campus feel more like a community.</p><div class="account-decoration">✳</div></div>
+        <div class="account-card">
+          <div id="accountMessage" class="notice" role="status" hidden></div>
+          <div id="accountForms">
+            <div class="form-tabs" role="tablist" aria-label="Account options"><button id="loginTab" class="form-tab active" role="tab" aria-selected="true">Log in</button><button id="registerTab" class="form-tab" role="tab" aria-selected="false">Create account</button></div>
+            <form id="loginForm" class="account-form">
+              <p class="form-intro">Welcome back. Let’s get you connected.</p>
+              <label>Email address<input name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@college.edu"></label>
+              <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+              <button class="button button-dark form-submit" type="submit">Log in <span>→</span></button>
+            </form>
+            <form id="registerForm" class="account-form" hidden enctype="multipart/form-data">
+              <p class="form-intro">A few details, then you’re on your way.</p>
+              <div class="form-row"><label>Full name<input name="fullName" autocomplete="name" required maxlength="120" placeholder="Your name"></label><label>College email<input name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@college.edu"></label></div>
+              <label>Student ID<input name="studentId" required maxlength="80" placeholder="Your student ID"></label>
+              <div class="form-row"><label>Password<input name="password" type="password" autocomplete="new-password" minlength="10" maxlength="128" required></label><label>Confirm password<input name="confirmPassword" type="password" autocomplete="new-password" minlength="10" maxlength="128" required></label></div>
+              <label class="upload-label">Student ID card image<input name="idCard" type="file" accept="image/jpeg,image/png,image/webp" required><span class="upload-hint">JPEG, PNG or WebP · up to 5 MB</span></label>
+              <p class="form-footnote">Automated text and QR checks help with review but do not prove an ID card is genuine. Your image is only visible to authorized administrators.</p>
+              <button class="button button-dark form-submit" type="submit">Create account <span>→</span></button>
+            </form>
+          </div>
+          <div id="studentStatus" hidden></div>
+          <div id="studentDashboard" hidden></div>
+          <div id="adminDashboard" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-banner section-wrap"><div><p class="eyebrow">SHARING IS A CAMPUS SUPERPOWER</p><h2>Pass it on. <span class="serif-accent">Pay it forward.</span></h2></div><a class="button button-light" href="#account">Find your community <span>↗</span></a><span class="banner-star" aria-hidden="true">✳</span></section>
+  </main>
+  <footer class="site-footer"><a class="brand footer-brand" href="#home"><span class="brand-mark">c</span><span>campus<span class="brand-light">share</span></span></a><span>Made for campus. Shared with care.</span><a href="#home">Back to top ↑</a></footer>
+
+  <dialog id="editDialog" class="edit-dialog">
+    <form id="editResourceForm" method="dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">YOUR LISTING</p><h2>Edit resource</h2></div><button class="icon-button" value="cancel" aria-label="Close dialog">×</button></div>
+      <label>Title<input name="title" required maxlength="160"></label>
+      <label>Description<textarea name="description" required maxlength="5000" rows="4"></textarea></label>
+      <label>Category<select name="category" required><option>Books</option><option>Electronics</option><option>Lab equipment</option><option>Sports</option><option>Other</option></select></label>
+      <div class="dialog-actions"><button class="button button-outline" value="cancel">Cancel</button><button class="button button-dark" id="saveResourceEdit" type="submit">Save changes</button></div>
+    </form>
+  </dialog>
+  <dialog id="resourceDialog" class="edit-dialog resource-dialog">
+    <div class="dialog-heading"><div><p class="eyebrow">COMMUNITY SHELF</p><h2>Resource details</h2></div><button class="icon-button" id="closeResourceDialog" aria-label="Close dialog">×</button></div>
+    <div id="resourceDetails" class="resource-details"></div>
+  </dialog>
+</body>
+</html>
